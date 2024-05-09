@@ -42,17 +42,17 @@ Chaque objet vendu rapport un certain nombre d'xp en fonction de sa rareté.
 Chaque niveau passé augmente les Attributs principaux du joueur de 10%.
 
 
-Xp nécessaire pour chaque niveau :
-
-Niveau 1 à 10 : 100 XP par niveau
-Niveau 11 à 20 : 200 XP par niveau
-Niveau 21 à 23 : 300 XP par niveau
-Niveau 24 à 26 : 500 XP par niveau
-Niveau 27 à 29 : 700 XP par niveau
-Niveau 30 à 32 : 1000 XP par niveau
-Niveau 33 à 35 : 1500 XP par niveau
-Niveau 36 à 38 : 2000 XP par niveau
-Niveau 39 à 40 : 3000 XP par niveau
+| Niveau | XP nécessaire |
+|--------|---------------|
+| 1-10   | 100 XP        |
+| 11-20  | 200 XP        |
+| 21-23  | 300 XP        |
+| 24-26  | 500 XP        |
+| 27-29  | 700 XP        |
+| 30-32  | 1000 XP       |
+| 33-35  | 1500 XP       |
+| 36-38  | 2000 XP       |
+| 39-40  | 3000 XP       |
 
 ## Crypto-coffre 
 
@@ -384,3 +384,20 @@ via l'application metamask ou l'application WEB.
 - Acheter NFT de bâtiments uniques dans la crypto-city, offrant des bonus permanents ou temporaires aux joueurs qui les possèdent.
 
 
+# Features
+
+## Version 1.0
+- Création du personnage
+- Création des équipements
+- Crypto coffre avec d'équipement de rareté aléatoire
+- Gain hors ligne
+- Vente des objets pour XP
+- Gain de niveau
+- Création des compétences 
+- Création systeme de combat 
+- Premier niveau de l'aventure
+
+## Version 2.0
+- Obtention des compétences
+- Création des cryptomons
+- Capture des cryptomons
