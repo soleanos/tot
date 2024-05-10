@@ -68,6 +68,14 @@ Les compagnons, surnommés "cryptomon", combattent à vos côtés. Plusieurs peu
 
 Des créatures uniques comme Marc the bear, Runny the bull et Monkey the trader peuvent être affrontées pour obtenir des récompenses spéciales.
 
+<span>
+  <img src="img/marc.jpg" width="424" height="424">
+</span>
+
+<span>
+  <img src="img/bully.jpg.jpg" width="424" height="424">
+</span>
+
 ## Stack technique
 
 Ce jeu utilise une stack technique moderne et robuste, incluant Firestore pour la base de données, Cloud Functions pour les calculs côté serveur et les triggers, Angular pour le front-end, couplé au framework Phaser pour les animations, et Firebase pour l'authentification, le stockage des fichiers, les notifications, les analytics, les crashlytics, les performances, le remote config, le test lab, le A/B testing et le hosting.
