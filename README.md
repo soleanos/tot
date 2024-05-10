@@ -46,7 +46,7 @@ En tant que joueur, vous avez des statistiques principales (niveau, expérience)
 
 En augmentant de niveau, vous obtenez des compétences de joueur. Les compétences sont obtenues en montant de niveau, et diffèrent en fonction de votre classe. Vous avez une compétence active et 5 passives. Au fur et à mesure de votre avancée dans l'aventure, vous pouvez changer de classe et donc de compétences.
 
-# Classes de personnages
+### Classes de personnages
 
 Dans notre jeu, les joueurs commencent leur aventure en tant que "Token Vagabond", une classe de base commune à tous. À ce stade, ils disposent d'une compétence active, le "Coup de poing", qui leur permet d'infliger des dégâts physiques à leurs ennemis.
 
