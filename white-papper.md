@@ -1,9 +1,13 @@
-Tale of Token - "L'histoire d'un jeton'"
 
-![Logo](img/logo.jpg)
+<p align="center">
+  <img src="img/logo.jpg" width="300" height="350">
+</p>
+
+Tale of Token - "L'histoire d'un jeton'"
+=================
 
 Le joueur évolue dans un monde fantastique où il incarne une piece de monnaie numérique qui doit combattre des monstres pour progresser dans l'histoire principale et obtenir des équipements de plus en plus puissants.
-Ce monde comprend de multiples références à la culture crypto-monnaie.
+Ce monde comprend de multiples références à la culture crypto-monnaie. Au file de son aventure le joueur pourra chosir sa voie via de multiples classes et compétences, il aura a affronter de nombreux adversaires et pourra même défier d'autres joueurs en pvp.
 
 # Principes
 Les buts du jeux sont multiples,:
@@ -307,6 +311,37 @@ Monkey the trader :
 Un singe que l'on peut défier plusieurs fois par jours.
 TODO : A définir
 
+# Détails graphiques :
+
+## Interface utilisateur :
+  
+## Personnages :
+
+<p align="center">
+  <img src="img/characters.jpg" width="200" height="200">
+</p>
+
+- Token vagabond
+- Archer
+- Mage
+- Guerrier
+- Ranger
+- Sorcier
+- Paladin
+- Archimage
+- Tireur d'élite
+- Seigneur de guerre
+
+## Cryptomons :
+
+### Commun (🟢 Vert) :
+### Rare (🔵 Bleu) :
+### Épique (🟣 Violet) :
+### Légendaire (🟠 Orange) :
+### Mythique (🔴 Rouge) :
+### Cosmique (⚫ Noir) :
+
+
 # Stack technique :
 
 - firestore pour la base de données
@@ -328,67 +363,52 @@ TODO : A définir
 
 ## Classique 
 
-### Achats dans l'application (IAP) 
+Dans notre jeu, nous offrons plusieurs options pour améliorer l'expérience de jeu et aider les joueurs à progresser plus rapidement.
 
-Les joueurs peuvent acheter des clés de coffre supplémentaires, des équipements spéciaux, des compagnons exclusifs, ou même des avantages temporaires pour faciliter leur progression.
+1. **Achats intégrés** : Les joueurs ont la possibilité d'acquérir des clés de coffre supplémentaires, des équipements spéciaux, des compagnons exclusifs ou des avantages temporaires pour faciliter leur progression.
 
-### Publicités 
+2. **Publicités** : Nous proposons des publicités vidéo optionnelles qui permettent aux joueurs de gagner des récompenses en jeu, comme des pièces d'or supplémentaires ou des clés de coffre.
 
-Intégrez des publicités vidéo optionnelles pour offrir aux joueurs des récompenses en jeu, comme des pièces d'or supplémentaires ou des clés de coffre, en échange de regarder une publicité.
+3. **Abonnements** : Nous proposons des abonnements premium qui offrent des avantages exclusifs, tels que des réductions sur les achats en jeu, des bonus d'XP, des cosmétiques spéciaux ou un accès anticipé à de nouveaux contenus.
 
-### Abonnements 
+4. **Ventes de cosmétiques** : Les joueurs peuvent personnaliser l'apparence de leur personnage, de leurs compagnons ou de leur guilde en achetant des cosmétiques, sans affecter le gameplay.
 
-Proposez des abonnements premium offrant des avantages exclusifs, tels que des réductions sur les achats en jeu, des bonus d'XP, des cosmétiques spéciaux ou un accès anticipé à de nouveaux contenus.
+5. **Packs de progression** : Nous proposons des packs de progression qui offrent aux joueurs un coup de pouce dans leur progression, comme des boosts d'XP, des coffres supplémentaires, ou des équipements exclusifs.
 
-### Ventes de cosmétiques 
+6. **Ventes d'équipements** : Les joueurs ont la possibilité d'acheter directement des équipements puissants, des cryptomons rares ou des objets spéciaux pour les aider dans leur aventure.
 
-Offrez aux joueurs la possibilité d'acheter des cosmétiques pour personnaliser l'apparence de leur personnage, de leurs compagnons ou de leur guilde, sans affecter le gameplay.
-
-### Packs de progression 
-
-Proposez des packs de progression qui offrent aux joueurs un coup de pouce dans leur progression, comme des boosts d'XP, des coffres supplémentaires, ou des équipements exclusifs.
-
-### Ventes d'équipements 
-
-Permettez aux joueurs d'acheter directement des équipements puissants, des cryptomons rares ou des objets spéciaux pour les aider dans leur aventure.
-
-### Événements payants 
-
-Organisez régulièrement des événements spéciaux accessibles uniquement aux joueurs ayant acheté un ticket d'entrée, offrant des récompenses uniques et des défis exclusifs.
-
+7. **Événements payants** : Nous organisons régulièrement des événements spéciaux accessibles uniquement aux joueurs ayant acheté un ticket d'entrée, offrant des récompenses uniques et des défis exclusifs.
 ## Crypto-monnaie
 
 L'application aurait sa propre crypto-monnaie, le TOT (TOT), qui pourrait être utilisée pour acheter des objets exclusifs, des avantages spéciaux ou des récompenses uniques dans le jeu.
 Cependant cette fonctionnalité ne serait pas directement accessible via l'application google play, uniquement 
 via l'application metamask ou l'application WEB.
 
-### Ventes de tokens TOT
-- Acheter des tokens TOT pour obtenir des avantages exclusifs, des récompenses spéciales ou des bonus en jeu.
-- Utiliser des tokens TOT pour participer à des événements spéciaux, des tournois ou des concours.
-- Échanger des tokens TOT contre des objets rares, des équipements puissants ou des cryptomons exclusifs.
-- Gagner des tokens TOT en participant à des événements, en complétant des quêtes ou en battant des boss spéciaux.
-- Utiliser des tokens TOT pour acheter des packs de progression, des coffres spéciaux ou des abonnements premium.
-- Échanger des tokens TOT contre des pièces d'or, des clés de coffre ou d'autres ressources en jeu.
-- Utiliser des tokens TOT pour acheter des cosmétiques, des skins ou des accessoires pour personnaliser son personnage.
-- Participer à des ventes aux enchères de cryptomons, d'équipements ou d'objets rares en utilisant des tokens TOT.
-- Utiliser des tokens TOT pour acheter des avantages temporaires, des boosts d'XP ou des bonus de progression.
-- Échanger des tokens TOT contre des réductions sur les achats en jeu, des promotions exclusives ou des offres spéciales.
-- Utiliser des tokens TOT pour acheter des tickets d'entrée à des événements payants, des tournois ou des compétitions.
-- Participer à des événements spéciaux, des concours ou des défis en utilisant des tokens TOT comme droit d'entrée.
-- Gagner des tokens TOT en participant à des guerres de guildes, des raids ou des donjons spéciaux.
-- Utiliser des tokens TOT pour acheter des équipements exclusifs, des cryptomons rares ou des objets spéciaux dans la boutique.
+Dans notre jeu, nous aurons donc une économie basée en partie sur la blockchain, qui offrira aux joueurs de nouvelles façons d'interagir et de progresser.
 
-### Ventes de NFT
+1. **Transactions de tokens TOT** : Les tokens TOT sont notre monnaie en jeu qui peut être utilisée de plusieurs façons :
+  - Les joueurs peuvent acheter des tokens TOT pour obtenir des avantages exclusifs, des récompenses spéciales ou des bonus en jeu.
+  - Les tokens TOT peuvent être utilisés pour participer à des événements spéciaux, des tournois ou des concours.
+  - Les joueurs peuvent échanger leurs tokens TOT contre des objets rares, des équipements puissants ou des cryptomons exclusifs.
+  - Les tokens TOT peuvent être gagnés en participant à des événements, en complétant des quêtes ou en battant des boss spéciaux.
+  - Les tokens TOT peuvent être utilisés pour acheter des packs de progression, des coffres spéciaux ou des abonnements premium.
+  - Les joueurs peuvent échanger leurs tokens TOT contre des pièces d'or, des clés de coffre ou d'autres ressources en jeu.
+  - Les tokens TOT peuvent être utilisés pour acheter des cosmétiques, des skins ou des accessoires pour personnaliser son personnage.
+  - Les joueurs peuvent participer à des ventes aux enchères de cryptomons, d'équipements ou d'objets rares en utilisant des tokens TOT.
+  - Les tokens TOT peuvent être utilisés pour acheter des avantages temporaires, des boosts d'XP ou des bonus de progression.
+  - Les joueurs peuvent échanger leurs tokens TOT contre des réductions sur les achats en jeu, des promotions exclusives ou des offres spéciales.
+  - Les tokens TOT peuvent être utilisés pour acheter des tickets d'entrée à des événements payants, des tournois ou des compétitions.
+  - Les joueurs peuvent participer à des événements spéciaux, des concours ou des défis en utilisant des tokens TOT comme droit d'entrée.
+  - Les tokens TOT peuvent être gagnés en participant à des guerres de guildes, des raids ou des donjons spéciaux.
+  - Les tokens TOT peuvent être utilisés pour acheter des équipements exclusifs, des cryptomons rares ou des objets spéciaux dans la boutique.
 
-#### Crypto-city
-
-- Acheter NFT de terrain unique dans la crypto-city, permettant d'obtenir plus rapidement des ressources, des équipements ou des compagnons exclusifs.
-- Acheter NFT de bâtiments uniques dans la crypto-city, offrant des bonus permanents ou temporaires aux joueurs qui les possèdent.
-
+2. **Ventes de NFT** : Nous avons également intégré des NFT (Non-Fungible Tokens) dans notre jeu pour offrir une expérience unique à nos joueurs :
+  - Dans notre Crypto-city, les joueurs peuvent acheter des NFT de terrain unique, ce qui leur permet d'obtenir plus rapidement des ressources, des équipements ou des compagnons exclusifs.
+  - Les joueurs peuvent également acheter des NFT de bâtiments uniques dans la Crypto-city, qui offrent des bonus permanents ou temporaires à leurs propriétaires.
 
 # Features
 
-## Version 1.0
+## Version 1.0 / POC
 - Authentification 
 - Création du personnage
 - Création des équipements
