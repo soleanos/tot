@@ -69,11 +69,11 @@ Les compagnons, surnommés "cryptomon", combattent à vos côtés. Plusieurs peu
 Des créatures uniques comme Marc the bear, Runny the bull et Monkey the trader peuvent être affrontées pour obtenir des récompenses spéciales.
 
 <span>
-  <img src="img/marc.jpg" width="424" height="424">
+  <img src="img/marc.jpg" width="324" height="324">
 </span>
 
 <span>
-  <img src="img/bully.jpg.jpg" width="424" height="424">
+  <img src="img/bully.jpg" width="324" height="324">
 </span>
 
 ## Stack technique
