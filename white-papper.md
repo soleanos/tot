@@ -1,5 +1,7 @@
 Tale of Token - "L'histoire d'un jeton'"
 
+![Logo](img/logo.jpg)
+
 Le joueur évolue dans un monde fantastique où il incarne une piece de monnaie numérique qui doit combattre des monstres pour progresser dans l'histoire principale et obtenir des équipements de plus en plus puissants.
 Ce monde comprend de multiples références à la culture crypto-monnaie.
 
@@ -387,6 +389,7 @@ via l'application metamask ou l'application WEB.
 # Features
 
 ## Version 1.0
+- Authentification 
 - Création du personnage
 - Création des équipements
 - Crypto coffre avec d'équipement de rareté aléatoire
