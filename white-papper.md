@@ -406,6 +406,10 @@ Dans notre jeu, nous aurons donc une économie basée en partie sur la blockchai
   - Dans notre Crypto-city, les joueurs peuvent acheter des NFT de terrain unique, ce qui leur permet d'obtenir plus rapidement des ressources, des équipements ou des compagnons exclusifs.
   - Les joueurs peuvent également acheter des NFT de bâtiments uniques dans la Crypto-city, qui offrent des bonus permanents ou temporaires à leurs propriétaires.
 
+Il n'y aura pas de stockage directement dans la blockchain, juste des transactions de tokens TOT et des ventes de NFT, qui seront gérées par les fonctions cloud / google sheduler. 
+
+Les joueurs pourront cependant miner un certain nombre de token par jour / heure, cela passera par une fonction cloud avec generation de preuve de travail et vérifier coté smart contract avec une clef publique. 
+
 # Features
 
 ## Version 1.0 / POC
