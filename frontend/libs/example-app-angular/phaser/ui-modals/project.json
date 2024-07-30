@@ -1,0 +1,24 @@
+{
+    "name": "tale-of-token-phaser-ui-modals",
+    "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+    "projectType": "library",
+    "sourceRoot": "libs/tale-of-token/phaser/ui-modals/src",
+    "prefix": "soleano",
+    "targets": {
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["{workspaceRoot}/coverage/libs/tale-of-token/phaser/ui-modals"],
+            "options": {
+                "jestConfig": "libs/tale-of-token/phaser/ui-modals/jest.config.ts",
+                "passWithNoTests": true
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": ["libs/tale-of-token/phaser/ui-modals/src/**/*.ts", "libs/tale-of-token/phaser/ui-modals/src/**/*.html"]
+            }
+        }
+    },
+    "tags": []
+}

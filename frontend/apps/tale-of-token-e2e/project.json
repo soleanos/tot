@@ -1,0 +1,29 @@
+{
+    "name": "tale-of-token-e2e",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "apps/tale-of-token-e2e/src",
+    "projectType": "application",
+    "targets": {
+        "e2e": {
+            "executor": "@nrwl/cypress:cypress",
+            "options": {
+                "cypressConfig": "apps/tale-of-token-e2e/cypress.json",
+                "devServerTarget": "tale-of-token:serve:development"
+            },
+            "configurations": {
+                "production": {
+                    "devServerTarget": "tale-of-token:serve:production"
+                }
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["apps/tale-of-token-e2e/**/*.{js,ts}"]
+            }
+        }
+    },
+    "tags": [],
+    "implicitDependencies": ["tale-of-token"]
+}

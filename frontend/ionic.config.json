@@ -1,0 +1,13 @@
+{
+  "defaultProject": "tale-of-token",
+  "projects": {
+    "tale-of-token": {
+      "name": "tale-of-token",
+      "integrations": {
+        "capacitor": {}
+      },
+      "type": "angular",
+      "root": "apps/tale-of-token"
+    }
+  }
+}

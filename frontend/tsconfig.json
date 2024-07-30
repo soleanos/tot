@@ -1,0 +1,45 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@soleano/tale-of-token/ionic/ui-buttons": [
+        "libs/tale-of-token/ionic/ui-buttons/src/index.ts"
+      ],
+      "@soleano/tale-of-token/ionic/ui-headers": [
+        "libs/tale-of-token/ionic/ui-headers/src/index.ts"
+      ],
+      "@soleano/tale-of-token/ionic/ui-modals": [
+        "libs/tale-of-token/ionic/ui-modals/src/index.ts"
+      ],
+      "@soleano/tale-of-token/phaser/singleton": [
+        "libs/tale-of-token/phaser/singleton/src/index.ts"
+      ],
+      "@soleano/tale-of-token/phaser/ui-modals": [
+        "libs/tale-of-token/phaser/ui-modals/src/index.ts"
+      ],
+      "@soleano/shared/data-access-model": [
+        "libs/shared/data-access-model/src/index.ts"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
+}
