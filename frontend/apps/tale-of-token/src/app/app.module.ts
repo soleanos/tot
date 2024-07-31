@@ -13,10 +13,18 @@ import { HomePageComponent } from './home/home.page';
 import { ReversePipe } from './pipes/reverse.pipe';
 import { ShopPageComponent } from './shop/shop.component';
 import { CommonModule } from '@angular/common';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+
+import { environment } from '../environments/environment';
 
 @NgModule({
     declarations: [AppComponent, ShopPageComponent, HomePageComponent, ReversePipe],
-    imports: [BrowserModule, CommonModule, IonicModule.forRoot(), PhaserSingletonService.forRoot(), AppRoutingModule],
+    imports: [BrowserModule, CommonModule, IonicModule.forRoot(), PhaserSingletonService.forRoot(),
+        AppRoutingModule,
+        provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+        provideAuth(() => getAuth()),
+    ],
     providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA], // Add this line
