@@ -2,7 +2,6 @@ import NodeCache from "node-cache";
 import cors from "cors";
 
 // Déclaration globale du cache
-export const nonceCache = new NodeCache({stdTTL: 60, checkperiod: 120});
 export const requestCache = new NodeCache({stdTTL: 60, checkperiod: 120});
 export const MAX_REQUESTS_PER_MINUTE = 5;
 

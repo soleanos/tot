@@ -12,5 +12,9 @@
     "preserveWatchOutput": true
   },
   "compileOnSave": true,
-  "include": ["src"]
+  "include": [
+    "src",
+    "scripts/local/generateKeys.js",
+    "scripts/local/signMessage.js"
+  ]
 }

@@ -25,18 +25,14 @@ export class AuthService {
             const accounts = await this.web3.eth.getAccounts();
             const address = accounts[0];
 
-            console.log("Sending address:", address);  // Ajout de logs pour débogage
-
-            // Obtenez le nonce depuis la fonction Firebase
-            const nonceResponse = await fetch('https://europe-west1-tot-poc.cloudfunctions.net/getNonce', {
+            const nonceResponse = await fetch(' https://getnonce-lgimcfkedq-ew.a.run.app', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ address }),  // Envoyer l'adresse dans le corps de la requête
+                body: JSON.stringify({ address }),
             });
-            console.log("toto:", address);  // Ajout de logs pour débogage
-            debugger
+
             if (!nonceResponse.ok) {
                 const errorText = await nonceResponse.text();
                 console.error("Error fetching nonce:", nonceResponse.status, errorText);
@@ -44,13 +40,12 @@ export class AuthService {
             }
 
             const { nonce } = await nonceResponse.json();
-            debugger
-            // Utilisez le nonce pour signer le message
-            const message = nonce;
+            console.log("Received nonce from server:", nonce); // Log de débogage
+
+            const message = "Accepter de vous authentifier sur le jeux Tale of Token";
             const signature = await this.web3.eth.personal.sign(message, address, '');
 
-            // Authentifiez avec le nonce signé
-            const response = await fetch('https://europe-west1-tot-poc.cloudfunctions.net/authenticateMetaMask', {
+            const response = await fetch('https://authenticatemetamask-lgimcfkedq-ew.a.run.app', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

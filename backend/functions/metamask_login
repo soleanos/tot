@@ -1,0 +1,24 @@
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+const Web3 = require('web3');
+
+admin.initializeApp();
+
+const web3 = new Web3();
+
+exports.authenticateMetaMask = functions.https.onRequest(async (req, res) => {
+  const { address, signature, message } = req.body;
+
+  try {
+    const recoveredAddress = web3.eth.accounts.recover(message, signature);
+    if (recoveredAddress.toLowerCase() !== address.toLowerCase()) {
+      return res.status(400).send('Invalid signature');
+    }
+
+    const customToken = await admin.auth().createCustomToken(address);
+    return res.json({ customToken });
+  } catch (error) {
+    console.error("Error verifying signature or generating custom token: ", error);
+    return res.status(500).send('Internal server error');
+  }
+});
