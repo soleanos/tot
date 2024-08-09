@@ -14,7 +14,7 @@ import { ReversePipe } from './pipes/reverse.pipe';
 import { ShopPageComponent } from './shop/shop.component';
 import { CommonModule } from '@angular/common';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideFirebaseApp, initializeApp, getApp } from '@angular/fire/app';
 
 import { environment } from '../environments/environment';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
@@ -25,7 +25,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
         AppRoutingModule,
         provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
         provideAuth(() => getAuth()),
-        provideFirestore(() => getFirestore())
+        provideFirestore(() => getFirestore(getApp()))
     ],
     providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
     bootstrap: [AppComponent],

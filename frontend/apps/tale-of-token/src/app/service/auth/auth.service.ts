@@ -1,9 +1,9 @@
-import { inject, Injectable } from '@angular/core';
+import { Inject, inject, Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import Web3 from 'web3';
 import firebase from 'firebase/compat';
 import { Auth, getAuth, onAuthStateChanged, signInWithCustomToken, signOut } from '@angular/fire/auth';
-import { doc, Firestore, getDoc } from '@angular/fire/firestore';
+import { doc, Firestore, getDoc, getFirestore } from '@angular/fire/firestore';
 import { BehaviorSubject } from 'rxjs';
 import User = firebase.User;
 
@@ -16,7 +16,9 @@ export class AuthService {
     private usernameSubject = new BehaviorSubject<string | null>(null);
     username$ = this.usernameSubject.asObservable();
 
-    constructor(private auth: Auth,  private firestore: Firestore) {
+    constructor(private auth: Auth,  @Inject(Firestore) private firestore: Firestore) {
+        console.log('Firestore instance:', this.firestore);
+
         if ((window as any).ethereum) {
             this.web3 = new Web3((window as any).ethereum);
         } else if ((window as any).web3) {
@@ -30,13 +32,33 @@ export class AuthService {
     private initAuthListener(): void {
         onAuthStateChanged(this.auth, async (user: User | null) => {
             if (user) {
-                const userDocRef = doc(this.firestore, `users/${user.uid}`);
-                const userDoc = await getDoc(userDocRef);
+                console.log('User ID:', user.uid);
+                const docPath = `users/${user.uid}`;
+                console.log('Document Path:', docPath);
 
-                if (userDoc.exists()) {
-                    this.usernameSubject.next(userDoc.data()['username']);
-                } else {
-                    console.error('No user document found');
+                console.log('Type of Firestore instance:', typeof this.firestore);
+                console.log('Is Firestore instance:', this.firestore instanceof Firestore);
+                const testFirestore: Firestore = this.firestore;
+                console.log('Test Firestore instance:', testFirestore);
+                console.log('Is Firestore instance:', testFirestore instanceof Firestore);
+
+                try {
+                    const userDocRef = doc(this.firestore, "cities", user.uid);
+
+                    console.log('Document Reference:', userDocRef);
+
+                    const userDoc = await getDoc(userDocRef);
+
+                    console.log('User Document:', userDoc.exists() ? userDoc.data() : 'No document found');
+
+                    if (userDoc.exists()) {
+                        this.usernameSubject.next(userDoc.data()?.['username'] || null);
+                    } else {
+                        console.error('No user document found');
+                        this.usernameSubject.next(null);
+                    }
+                } catch (error) {
+                    console.error('Error fetching user document:', error);
                     this.usernameSubject.next(null);
                 }
             } else {

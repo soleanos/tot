@@ -1,27 +1,30 @@
 import * as functions from "firebase-functions/v2";
+import * as admin from "firebase-admin";
+import * as logger from "firebase-functions/logger";
+import Web3Library from "web3";
 import {
   corsHandler,
   requestCache,
   MAX_REQUESTS_PER_MINUTE,
 } from "../config/config";
-import * as logger from "firebase-functions/logger";
-import * as admin from "firebase-admin";
-import Web3Library from "web3";
 
 // Initialisez Firebase Admin avec les credentials explicites
 if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.applicationDefault(),
   });
+  logger.info("Firebase Admin initialized.");
+} else {
+  logger.info("Firebase Admin already initialized.");
 }
 
 const web3 = new Web3Library();
 
 /**
- * Cloud Function pour authentifier
- * un utilisateur en utilisant MetaMask.
- * La fonction vérifie le nonce
- * et la signature, et génère un jeton personnalisé.
+ * Cloud Function pour authentifier un
+ * utilisateur en utilisant MetaMask.
+ * La fonction vérifie le nonce et la signature,
+ * et génère un jeton personnalisé.
  */
 export const authenticateMetaMask = functions.https.onRequest(
   {
@@ -159,10 +162,50 @@ export const authenticateMetaMask = functions.https.onRequest(
           address: lowerCaseAddress,
         });
 
+        // Créer le jeton personnalisé
         const customToken = await admin
           .auth()
           .createCustomToken(lowerCaseAddress);
         logger.info("Jeton personnalisé créé avec succès", {address});
+
+        // Vérifiez si l'utilisateur a déjà un document dans Firestore
+        const usersCollectionRef = admin.firestore().collection("users");
+        const userDocRef = usersCollectionRef.doc(lowerCaseAddress);
+        const userDoc = await userDocRef.get();
+
+        if (!userDoc.exists) {
+          logger.info(
+            "Création d'un nouveau document utilisateur dans Firestore.",
+          );
+          const username = `coin${Math.floor(1000 + Math.random() * 9000)}`;
+
+          logger.info(`Generated username for MetaMask user: ${username}`);
+
+          // Ajouter un utilisateur bidon si la collection n'existe pas
+          if ((await usersCollectionRef.get()).empty) {
+            logger.info(
+              "La collection 'users' n'existe pas, " +
+                "création avec un utilisateur bidon.",
+            );
+            await usersCollectionRef.doc("dummy_user").set({
+              username: "dummy_user",
+              createdAt: admin.firestore.FieldValue.serverTimestamp(),
+              provider: "system",
+            });
+          }
+
+          await userDocRef.set({
+            username: username,
+            createdAt: admin.firestore.FieldValue.serverTimestamp(),
+            provider: "MetaMask",
+          });
+          logger.info(`Document utilisateur créé pour UID=${lowerCaseAddress}`);
+        } else {
+          logger.info(
+            `Le document utilisateur existe déjà pour UID=${lowerCaseAddress}`,
+          );
+        }
+
         res.json({customToken});
       } catch (error: unknown) {
         let errorMessage = "Erreur inconnue";
@@ -174,8 +217,8 @@ export const authenticateMetaMask = functions.https.onRequest(
         }
 
         logger.error(
-          "Erreur lors de la vérification de la signature" +
-            " ou de la génération du jeton personnalisé",
+          "Erreur lors de la vérification de la signature " +
+            "ou de la génération du jeton personnalisé",
           {error: errorMessage},
         );
         res.status(500).send("Erreur interne du serveur");
