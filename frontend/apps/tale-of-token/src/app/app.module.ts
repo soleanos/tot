@@ -17,6 +17,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 
 import { environment } from '../environments/environment';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 @NgModule({
     declarations: [AppComponent, ShopPageComponent, HomePageComponent, ReversePipe],
@@ -24,6 +25,7 @@ import { environment } from '../environments/environment';
         AppRoutingModule,
         provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
         provideAuth(() => getAuth()),
+        provideFirestore(() => getFirestore())
     ],
     providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
     bootstrap: [AppComponent],

@@ -15,11 +15,12 @@ import Web3 from 'web3';
     templateUrl: 'app.component.html',
     styleUrls: ['app.component.scss'],
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent implements OnDestroy, OnInit  {
     public actionsHistoryRef: string[]; // * Store all actions on home screen for printing
     public warriors: Warrior[] = []; // * Array of Warriors since they don't currently have a graphic associated
     web3: Web3;
     account: string;
+    username: string | null = null;
 
     // * for our app template to use the actions History)
     constructor(public phaserInstance: PhaserSingletonService, public modalController: ModalController, private authService: AuthService) {
@@ -34,6 +35,15 @@ export class AppComponent implements OnDestroy {
         return await modal.present();
     }
 
+    ngOnInit() {
+        this.authService.username$.subscribe((username) => {
+            this.username = username;
+        });
+    }
+
+    logout() {
+        this.authService.logout();
+    }
 
     /**
      * * Creates a warrior to be placed on scene

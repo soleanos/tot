@@ -1,5 +1,9 @@
 import * as functions from "firebase-functions/v2";
-import {corsHandler} from "../config/config";
+import {
+  corsHandler,
+  requestCache,
+  MAX_REQUESTS_PER_MINUTE,
+} from "../config/config";
 import * as logger from "firebase-functions/logger";
 import * as admin from "firebase-admin";
 import Web3Library from "web3";
@@ -24,21 +28,48 @@ export const authenticateMetaMask = functions.https.onRequest(
     region: "europe-west1",
   },
   (req, res): void => {
+    // Gérer les requêtes OPTIONS pour CORS
+    if (req.method === "OPTIONS") {
+      res.set("Access-Control-Allow-Origin", "*");
+      res.set("Access-Control-Allow-Methods", "GET, POST");
+      res.set("Access-Control-Allow-Headers", "Content-Type, x-nonce");
+      res.set("Access-Control-Max-Age", "3600");
+      res.status(204).send("");
+      return;
+    }
+
     corsHandler(req, res, async () => {
       const {address, signature, message} = req.body;
+      const nonce = req.headers["x-nonce"]; // Lire le nonce depuis l'en-tête
+
       logger.info("Corps de la requête reçu", {body: req.body});
 
-      if (!address || !signature || !message) {
+      if (!address || !signature || !message || !nonce) {
         logger.error(
-          "Adresse, signature ou message manquant dans le corps de la requête",
-          {body: req.body},
+          "Adresse, signature, message ou nonce manquant dans la requête",
+          {body: req.body, headers: req.headers},
         );
-        res.status(400).send("Adresse, signature ou message manquant");
+        res.status(400).send("Adresse, signature, message ou nonce manquant");
         return;
       }
 
+      // Limitation des requêtes par adresse
+      const lowerCaseAddress = address.toLowerCase();
+      const requestCount = requestCache.get<number>(lowerCaseAddress) || 0;
+
+      if (requestCount >= MAX_REQUESTS_PER_MINUTE) {
+        logger.warn("Trop de requêtes", {
+          address: lowerCaseAddress,
+          requestCount,
+        });
+        res.status(429).send("Trop de requêtes - veuillez réessayer plus tard");
+        return;
+      }
+
+      // Mettre à jour le compteur de requêtes pour l'adresse
+      requestCache.set(lowerCaseAddress, requestCount + 1);
+
       try {
-        const lowerCaseAddress = address.toLowerCase();
         logger.debug("Adresse en minuscules", {lowerCaseAddress});
 
         const nonceDoc = admin
@@ -69,11 +100,11 @@ export const authenticateMetaMask = functions.https.onRequest(
           return;
         }
 
-        const {nonce, createdAt} = nonceData as {
+        const {nonce: cachedNonce, createdAt} = nonceData as {
           nonce: string;
           createdAt: admin.firestore.Timestamp;
         };
-        logger.debug("Données du nonce extraites", {nonce, createdAt});
+        logger.debug("Données du nonce extraites", {cachedNonce, createdAt});
 
         const createdAtDate = createdAt.toDate();
         logger.debug("Date de création convertie", {createdAtDate});
@@ -87,7 +118,7 @@ export const authenticateMetaMask = functions.https.onRequest(
         if (currentTime > expirationTime) {
           logger.warn("Nonce expiré", {
             address: lowerCaseAddress,
-            nonce,
+            nonce: cachedNonce,
             currentTime,
             expirationTime,
           });
@@ -96,14 +127,20 @@ export const authenticateMetaMask = functions.https.onRequest(
           return;
         }
 
-        if (message !== nonce) {
+        logger.debug("Nonce validé avec succès", {cachedNonce, nonce});
+
+        if (nonce !== cachedNonce) {
           logger.warn("Nonce invalide", {
-            cachedNonce: nonce,
-            receivedNonce: message,
+            cachedNonce,
+            receivedNonce: nonce,
           });
           res.status(400).send("Nonce invalide");
           return;
         }
+
+        logger.debug(
+          "Début de la récupération de l'adresse à partir de la signature",
+        );
 
         const recoveredAddress = web3.eth.accounts.recover(message, signature);
         logger.debug("Adresse récupérée à partir de la signature", {
@@ -137,8 +174,8 @@ export const authenticateMetaMask = functions.https.onRequest(
         }
 
         logger.error(
-          "Erreur lors de la vérification de la" +
-            " signature ou de la génération du jeton personnalisé",
+          "Erreur lors de la vérification de la signature" +
+            " ou de la génération du jeton personnalisé",
           {error: errorMessage},
         );
         res.status(500).send("Erreur interne du serveur");
