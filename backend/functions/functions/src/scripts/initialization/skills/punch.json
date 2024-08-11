@@ -1,0 +1,10 @@
+{
+  "skillId": "punch",
+  "name": "Coup de poing",
+  "type": "active",
+  "description": "Assène un coup de poing à un ennemi, infligeant des dégâts physiques.",
+  "effect": {
+    "damage": 10,
+    "cooldown": 5
+  }
+}

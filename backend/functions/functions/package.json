@@ -15,9 +15,11 @@
   },
   "main": "lib/index.js",
   "dependencies": {
+    "@inquirer/prompts": "^5.3.8",
     "firebase-admin": "^12.1.0",
     "firebase-functions": "^5.0.0",
     "node-cache": "^5.1.2",
+    "tsconfig-paths": "^4.2.0",
     "web3": "^4.11.1"
   },
   "devDependencies": {

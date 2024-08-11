@@ -1,0 +1,19 @@
+{
+  "classId": "archer",
+  "name": "Archer",
+  "description": "L'Archer est un maître du combat à distance, capable de tirer des flèches avec une grande précision. Il utilise sa vitesse et sa dextérité pour infliger des dégâts importants à ses ennemis de loin.",
+  "startingAttributes": {
+    "health": 90,
+    "attack": 15,
+    "defense": 8,
+    "speed": 1.2,
+    "criticalChance": 0.10
+  },
+  "skills": [
+    { "skillId": "arrow_shot" }
+  ],
+  "evolutionPaths": [
+    { "level": 50, "classId": "ranger", "name": "Ranger" },
+    { "level": 50, "classId": "sniper", "name": "Sniper" }
+  ]
+}

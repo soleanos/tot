@@ -1,0 +1,10 @@
+{
+  "skillId": "arrow_shot",
+  "name": "Tir à l'arc",
+  "type": "active",
+  "description": "L'archer tire une flèche précise sur un ennemi, infligeant des dégâts élevés à distance.",
+  "effect": {
+    "damage": 25,
+    "cooldown": 4
+  }
+}

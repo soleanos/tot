@@ -7,6 +7,7 @@ import {
   requestCache,
   MAX_REQUESTS_PER_MINUTE,
 } from "../config/config";
+import {createPlayer} from "../services/playerService";
 
 // Initialisez Firebase Admin avec les credentials explicites
 if (!admin.apps.length) {
@@ -21,8 +22,8 @@ if (!admin.apps.length) {
 const web3 = new Web3Library();
 
 /**
- * Cloud Function pour authentifier un
- * utilisateur en utilisant MetaMask.
+ * Cloud Function pour authentifier un joueur
+ * en utilisant MetaMask.
  * La fonction vérifie le nonce et la signature,
  * et génère un jeton personnalisé.
  */
@@ -168,43 +169,9 @@ export const authenticateMetaMask = functions.https.onRequest(
           .createCustomToken(lowerCaseAddress);
         logger.info("Jeton personnalisé créé avec succès", {address});
 
-        // Vérifiez si l'utilisateur a déjà un document dans Firestore
-        const usersCollectionRef = admin.firestore().collection("users");
-        const userDocRef = usersCollectionRef.doc(lowerCaseAddress);
-        const userDoc = await userDocRef.get();
-
-        if (!userDoc.exists) {
-          logger.info(
-            "Création d'un nouveau document utilisateur dans Firestore.",
-          );
-          const username = `coin${Math.floor(1000 + Math.random() * 9000)}`;
-
-          logger.info(`Generated username for MetaMask user: ${username}`);
-
-          // Ajouter un utilisateur bidon si la collection n'existe pas
-          if ((await usersCollectionRef.get()).empty) {
-            logger.info(
-              "La collection 'users' n'existe pas, " +
-                "création avec un utilisateur bidon.",
-            );
-            await usersCollectionRef.doc("dummy_user").set({
-              username: "dummy_user",
-              createdAt: admin.firestore.FieldValue.serverTimestamp(),
-              provider: "system",
-            });
-          }
-
-          await userDocRef.set({
-            username: username,
-            createdAt: admin.firestore.FieldValue.serverTimestamp(),
-            provider: "MetaMask",
-          });
-          logger.info(`Document utilisateur créé pour UID=${lowerCaseAddress}`);
-        } else {
-          logger.info(
-            `Le document utilisateur existe déjà pour UID=${lowerCaseAddress}`,
-          );
-        }
+        // Génération du nom d'utilisateur et création du joueur
+        const username = `coin${Math.floor(1000 + Math.random() * 9000)}`;
+        await createPlayer(lowerCaseAddress, username, "token_vagabond");
 
         res.json({customToken});
       } catch (error: unknown) {
