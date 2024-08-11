@@ -1,33 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { select, confirm } from '@inquirer/prompts';
-
-interface Skill {
-    skillId: string;
-    name: string;
-    type: 'active' | 'passive';
-    description: string;
-    effect: {
-        damage?: number;
-        cooldown?: number;
-        [key: string]: any;
-    };
-}
-
-interface Class {
-    classId: string;
-    name: string;
-    description: string;
-    startingAttributes: {
-        health: number;
-        attack: number;
-        defense: number;
-        speed: number;
-        criticalChance: number;
-    };
-    skills: { skillId: string }[];
-    evolutionPaths: { level: number; classId: string; name: string }[];
-}
+import { input, select, confirm } from '@inquirer/prompts';
+import { Class } from './model/class'; // Chemin correct
+import { Skill } from './model/skill'; // Chemin correct
 
 /**
  * Fonction pour lire un fichier JSON.
@@ -72,17 +47,25 @@ async function createOrUpdateClass(): Promise<void> {
         path.join(classesDir, `${classId}.json`);
 
     if (classId === 'new') {
-        // Créer une nouvelle classe
+        // Demander les détails de la nouvelle classe
+        const className = await input({ message: 'Entrez le nom de la classe:' });
+        const classDescription = await input({ message: 'Entrez la description de la classe:' });
+        const health = await input({ message: 'Entrez la valeur de santé de départ:', default: '100' });
+        const attack = await input({ message: 'Entrez la valeur d\'attaque de départ:', default: '10' });
+        const defense = await input({ message: 'Entrez la valeur de défense de départ:', default: '5' });
+        const speed = await input({ message: 'Entrez la vitesse de départ:', default: '10' });
+        const criticalChance = await input({ message: 'Entrez le pourcentage de coup critique de départ:', default: '5' });
+
         classData = {
-            classId: 'nouvelle_classe',
-            name: 'Nouvelle Classe',
-            description: 'Description de la nouvelle classe',
+            classId: className.toLowerCase().replace(/\s+/g, '_'),
+            name: className,
+            description: classDescription,
             startingAttributes: {
-                health: 100,
-                attack: 10,
-                defense: 5,
-                speed: 10,
-                criticalChance: 5,
+                health: parseInt(health, 10),
+                attack: parseInt(attack, 10),
+                defense: parseInt(defense, 10),
+                speed: parseInt(speed, 10),
+                criticalChance: parseInt(criticalChance, 10),
             },
             skills: [],
             evolutionPaths: [],
@@ -142,15 +125,27 @@ async function createOrUpdateSkill(): Promise<void> {
 
     let skillData: Skill;
     if (skillId === 'new') {
-        // Créer une nouvelle compétence
+        // Demander les détails de la nouvelle compétence
+        const skillName = await input({ message: 'Entrez le nom de la compétence:' });
+        const skillDescription = await input({ message: 'Entrez la description de la compétence:' });
+        const skillType = await select<'active' | 'passive'>({
+            message: 'Choisissez le type de compétence:',
+            choices: [
+                { name: 'Active', value: 'active' },
+                { name: 'Passive', value: 'passive' }
+            ]
+        });
+        const damage = await input({ message: 'Entrez les dégâts de la compétence:', default: '10' });
+        const cooldown = await input({ message: 'Entrez le temps de recharge de la compétence (en secondes):', default: '5' });
+
         skillData = {
-            skillId: 'nouvelle_competence',
-            name: 'Nouvelle Compétence',
-            type: 'active',
-            description: 'Description de la nouvelle compétence',
+            skillId: skillName.toLowerCase().replace(/\s+/g, '_'),
+            name: skillName,
+            type: skillType,
+            description: skillDescription,
             effect: {
-                damage: 10,
-                cooldown: 5,
+                damage: parseInt(damage, 10),
+                cooldown: parseInt(cooldown, 10),
             },
         };
     } else {
@@ -214,10 +209,10 @@ async function manageClassSkills(classData: Class): Promise<Class> {
             case 'remove':
                 const skillIdToRemove = await select({
                     message: 'Choisissez la compétence à supprimer:',
-                    choices: classData.skills.map(skill => ({ name: skill.skillId, value: skill.skillId }))
+                    choices: classData.skills.map((skill) => ({ name: skill.skillId, value: skill.skillId }))
                 });
 
-                classData.skills = classData.skills.filter(skill => skill.skillId !== skillIdToRemove);
+                classData.skills = classData.skills.filter((skill) => skill.skillId !== skillIdToRemove);
                 console.log(`Compétence '${skillIdToRemove}' supprimée de la classe '${classData.classId}'.`);
                 break;
 
@@ -238,12 +233,12 @@ function viewClassDetails(): void {
     const classFiles = fs.readdirSync(classesDir);
 
     classFiles.forEach(file => {
-        const classData = readJsonFile(path.join(classesDir, file));
+        const classData = readJsonFile(path.join(classesDir, file)) as Class;
         console.log(`\nClasse: ${classData.name}`);
         console.log(`Description: ${classData.description}`);
         console.log('Attributs de départ:', classData.startingAttributes);
-        console.log('Compétences associées:', classData.skills.map((skill: { skillId: string }) => skill.skillId).join(', '));
-        console.log('Chemins d\'évolution:', classData.evolutionPaths.map((path: { name: string; level: number }) => `${path.name} (Niveau ${path.level})`).join(', '));
+        console.log('Compétences associées:', classData.skills.map(skill => skill.skillId).join(', '));
+        console.log('Chemins d\'évolution:', classData.evolutionPaths.map((path: { name: any; level: any; }) => `${path.name} (Niveau ${path.level})`).join(', '));
     });
 }
 
@@ -255,7 +250,7 @@ function viewSkillDetails(): void {
     const skillFiles = fs.readdirSync(skillsDir);
 
     skillFiles.forEach(file => {
-        const skillData = readJsonFile(path.join(skillsDir, file));
+        const skillData = readJsonFile(path.join(skillsDir, file)) as Skill;
         console.log(`\nCompétence: ${skillData.name}`);
         console.log(`Type: ${skillData.type}`);
         console.log(`Description: ${skillData.description}`);
