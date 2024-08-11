@@ -119,11 +119,9 @@ async function createOrUpdateSkill(): Promise<void> {
         choices: [...skillFiles, { name: 'Créer une nouvelle compétence', value: 'new' }]
     });
 
-    const skillFilePath = skillId === 'new' ?
-        path.join(skillsDir, `nouvelle_competence.json`) :
-        path.join(skillsDir, `${skillId}.json`);
-
     let skillData: Skill;
+    let skillFilePath: string;
+
     if (skillId === 'new') {
         // Demander les détails de la nouvelle compétence
         const skillName = await input({ message: 'Entrez le nom de la compétence:' });
@@ -148,7 +146,11 @@ async function createOrUpdateSkill(): Promise<void> {
                 cooldown: parseInt(cooldown, 10),
             },
         };
+
+        // Définir le chemin du fichier en fonction du nom de la compétence
+        skillFilePath = path.join(skillsDir, `${skillData.skillId}.json`);
     } else {
+        skillFilePath = path.join(skillsDir, `${skillId}.json`);
         skillData = readJsonFile(skillFilePath) as Skill;
     }
 

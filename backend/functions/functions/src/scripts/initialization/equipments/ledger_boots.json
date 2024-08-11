@@ -1,0 +1,7 @@
+{
+  "id": "ledger_boots",
+  "name": "Bottes du Grand Livre",
+  "description": "Des bottes qui laissent une empreinte indélébile, tout comme les transactions sur un grand livre blockchain.",
+  "imageIcon": "public/images/equipments/ledger_boots_icon.png",
+  "image": "public/images/equipments/ledger_boots.png"
+}

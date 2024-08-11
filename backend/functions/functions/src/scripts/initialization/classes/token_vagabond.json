@@ -6,13 +6,29 @@
     "health": 100,
     "attack": 10,
     "defense": 5,
-    "speed": 1.0,
+    "speed": 1,
     "criticalChance": 0.05
   },
-  "skills": [{ "skillId": "punch" }],
+  "skills": [
+    {
+      "skillId": "punch"
+    }
+  ],
   "evolutionPaths": [
-    { "level": 10, "classId": "archer", "name": "Archer" },
-    { "level": 10, "classId": "mage", "name": "Mage" },
-    { "level": 10, "classId": "warrior", "name": "Guerrier" }
+    {
+      "level": 10,
+      "classId": "archer",
+      "name": "Archer"
+    },
+    {
+      "level": 10,
+      "classId": "mage",
+      "name": "Mage"
+    },
+    {
+      "level": 10,
+      "classId": "warrior",
+      "name": "Guerrier"
+    }
   ]
 }

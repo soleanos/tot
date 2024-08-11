@@ -1,0 +1,7 @@
+{
+  "id": "smart_contract_bracers",
+  "name": "Brassards du Contrat Intelligent",
+  "description": "Des brassards qui exécutent chaque mouvement avec une précision imparable, garantissant une sécurité totale.",
+  "imageIcon": "public/images/equipments/smart_contract_bracers_icon.png",
+  "image": "public/images/equipments/smart_contract_bracers.png"
+}

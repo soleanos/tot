@@ -1,0 +1,10 @@
+{
+  "skillId": "fireball",
+  "name": "Boule de Feu",
+  "type": "active",
+  "description": "Lance une boule de feu qui inflige des dégâts à un ennemi.",
+  "effect": {
+    "damage": 40,
+    "cooldown": 5
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "id": "satoshi_sandals",
+  "name": "Sandales de Satoshi",
+  "description": "Des sandales légendaires portées par le mystérieux créateur, Satoshi Nakamoto, conférant une aura énigmatique.",
+  "imageIcon": "public/images/equipments/satoshi_sandals_icon.png",
+  "image": "public/images/equipments/satoshi_sandals.png"
+}

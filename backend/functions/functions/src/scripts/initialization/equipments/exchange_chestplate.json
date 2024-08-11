@@ -1,0 +1,7 @@
+{
+  "id": "exchange_chestplate",
+  "name": "Plastron de l'Échange",
+  "description": "Un plastron qui protège contre les fluctuations volatiles des marchés crypto.",
+  "imageIcon": "public/images/equipments/exchange_chestplate_icon.png",
+  "image": "public/images/equipments/exchange_chestplate.png"
+}

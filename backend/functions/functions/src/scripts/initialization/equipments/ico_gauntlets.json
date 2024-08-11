@@ -1,0 +1,7 @@
+{
+  "id": "ico_gauntlets",
+  "name": "Gantelets de l'ICO",
+  "description": "Des gantelets qui confèrent au porteur le pouvoir d'initier de nouveaux départs, tout comme une ICO.",
+  "imageIcon": "public/images/equipments/ico_gauntlets_icon.png",
+  "image": "public/images/equipments/ico_gauntlets.png"
+}

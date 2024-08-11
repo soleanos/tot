@@ -1,0 +1,11 @@
+{
+  "skillId": "shield_block",
+  "name": "Shield Block",
+  "type": "passive",
+  "description": "Reduces incoming damage for a short period of time.",
+  "effect": {
+    "damageReduction": 50,
+    "duration": 5,
+    "cooldown": 10
+  }
+}

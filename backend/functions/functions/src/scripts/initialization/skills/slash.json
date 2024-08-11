@@ -1,0 +1,10 @@
+{
+  "skillId": "slash",
+  "name": "Slash",
+  "type": "active",
+  "description": "A powerful melee attack that deals damage to a single enemy.",
+  "effect": {
+    "damage": 30,
+    "cooldown": 4
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "classId": "warrior",
+  "name": "Warrior",
+  "description": "A powerful melee fighter with unmatched strength and durability, excelling in close combat.",
+  "startingAttributes": {
+    "health": 120,
+    "attack": 20,
+    "defense": 15,
+    "speed": 10,
+    "criticalChance": 5
+  },
+  "skills": [
+    { "skillId": "slash" },
+    { "skillId": "shield_block" }
+  ],
+  "evolutionPaths": [
+    { "level": 10, "classId": "knight", "name": "Knight" },
+    { "level": 20, "classId": "berserker", "name": "Berserker" }
+  ]
+}

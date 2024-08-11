@@ -1,0 +1,7 @@
+{
+  "id": "altcoin_crown",
+  "name": "Couronne de l'Altcoin",
+  "description": "Une couronne ornée de pièces rares, symbolisant la maîtrise du royaume crypto.",
+  "imageIcon": "public/images/equipments/altcoin_crown_icon.png",
+  "image": "public/images/equipments/altcoin_crown.png"
+}

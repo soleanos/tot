@@ -1,0 +1,7 @@
+{
+  "id": "miner_gloves",
+  "name": "Gants du Mineur",
+  "description": "Des gants capables de creuser profondément dans les mines de crypto, extrayant les ressources les plus précieuses.",
+  "imageIcon": "public/images/equipments/miner_gloves_icon.png",
+  "image": "public/images/equipments/miner_gloves.png"
+}

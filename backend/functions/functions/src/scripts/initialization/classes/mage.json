@@ -1,0 +1,20 @@
+{
+  "classId": "mage",
+  "name": "Mage",
+  "description": "Un maître des arts mystiques, capable de manipuler les éléments pour infliger des dégâts dévastateurs à ses ennemis.",
+  "startingAttributes": {
+    "health": 80,
+    "attack": 15,
+    "defense": 5,
+    "speed": 12,
+    "criticalChance": 10
+  },
+  "skills": [
+    { "skillId": "fireball" },
+    { "skillId": "frost_nova" }
+  ],
+  "evolutionPaths": [
+    { "level": 10, "classId": "sorcerer", "name": "Sorcier" },
+    { "level": 20, "classId": "archmage", "name": "Archimage" }
+  ]
+}

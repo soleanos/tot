@@ -1,0 +1,7 @@
+{
+  "id": "blockchain_helmet",
+  "name": "Casque de la Blockchain",
+  "description": "Un casque robuste forgé à partir des blocs les plus sécurisés de la blockchain, offrant une protection inégalée.",
+  "imageIcon": "public/images/equipments/blockchain_helmet_icon.png",
+  "image": "public/images/equipments/blockchain_helmet.png"
+}

@@ -1,0 +1,11 @@
+{
+  "skillId": "frost_nova",
+  "name": "Nova de Givre",
+  "type": "active",
+  "description": "Gèle les ennemis à proximité, leur infligeant des dégâts et les ralentissant.",
+  "effect": {
+    "damage": 25,
+    "cooldown": 7,
+    "slowEffect": 50
+  }
+}
