@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Tale of Token - Connexion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div class="login-container ion-padding">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="12" size-md="6" class="ion-text-center">
+          <img src="assets/img/logo.jpg" alt="Tale of Token Logo" class="game-logo">
+          <h1 class="game-title">Tale of Token</h1>
+          <p class="game-subtitle">"L'histoire d'un jeton"</p>
+
+          <ion-button expand="block" color="google" class="provider-btn google-btn" (click)="loginWithGoogle()">
+            <ion-icon slot="start" name="logo-google"></ion-icon>
+            Se connecter avec Google
+          </ion-button>
+
+          <ion-button expand="block" color="facebook" class="provider-btn facebook-btn" (click)="loginWithFacebook()">
+            <ion-icon slot="start" name="logo-facebook"></ion-icon>
+            Se connecter avec Facebook
+          </ion-button>
+
+          <ion-button expand="block" color="dark" class="provider-btn github-btn" (click)="loginWithGitHub()">
+            <ion-icon slot="start" name="logo-github"></ion-icon>
+            Se connecter avec GitHub
+          </ion-button>
+
+          <ion-button expand="block" color="tertiary" class="provider-btn metamask-btn" (click)="loginWithMetaMask()">
+            <ion-icon slot="start" src="assets/img/metamask-icon.svg"></ion-icon>
+            Se connecter avec MetaMask
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <p class="footer">&copy; 2024 Tale of Token. Tous droits réservés.</p>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

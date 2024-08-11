@@ -1,0 +1,42 @@
+.login-container {
+    .game-logo {
+        width: 150px;
+        margin-bottom: 20px;
+    }
+
+    .game-title {
+        font-size: 2rem;
+        color: #e3a617;
+    }
+
+    .game-subtitle {
+        color: #888;
+        margin-bottom: 30px;
+    }
+
+    .provider-btn {
+        margin-bottom: 15px;
+    }
+
+    ion-button.google-btn {
+        --background: #db4437;
+    }
+
+    ion-button.facebook-btn {
+        --background: #4267B2;
+    }
+
+    ion-button.github-btn {
+        --background: #333;
+    }
+
+    ion-button.metamask-btn {
+        --background: #f6851b;
+    }
+
+    .footer {
+        margin-top: 30px;
+        font-size: 0.9rem;
+        color: #777;
+    }
+}

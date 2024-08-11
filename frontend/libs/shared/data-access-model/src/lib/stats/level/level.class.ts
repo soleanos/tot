@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-unsafe-argument */
-import { Stat } from '@soleano/shared/data-access-model';
+import { Stat } from '@company-name/shared/data-access-model';
 
 export class Level extends Stat {
     private static XP_PER_LEVEL = 5;
     private _xp: Stat;
 
-    constructor(startingValue) {
+    public constructor(startingValue) {
         super(startingValue);
     }
 

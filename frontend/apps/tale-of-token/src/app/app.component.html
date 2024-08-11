@@ -4,11 +4,12 @@
         <ion-menu contentId="main">
             <ion-header>
                 <ion-toolbar>
-                    <ion-title>Menu</ion-title>
+                    <ion-title>Ionic Menu</ion-title>
                 </ion-toolbar>
             </ion-header>
             <!-- There should only ever be one ion-content in a single view -->
             <ion-content>
+
                 <div *ngIf="username; else notLoggedIn">
                     <p>Bienvenue, {{ username }}!</p>
                     <ion-button (click)="logout()">Se déconnecter</ion-button>
@@ -40,9 +41,6 @@
                 <ion-item-divider>
                     <ion-label> WARRIORS </ion-label>
                 </ion-item-divider>
-
-
-
                 <ion-list>
                     <ion-item>
                         <div *ngFor="let _warrior of warriors">

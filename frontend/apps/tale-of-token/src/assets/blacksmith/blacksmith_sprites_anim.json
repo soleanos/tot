@@ -4,7 +4,7 @@
             "key": "blacksmith_hammer",
             "type": "frames",
             "repeat": -1,
-            "frameRate": 3,
+            "frameRate": 6,
             "frames": [
                 {
                     "key": "blacksmith_hammer",

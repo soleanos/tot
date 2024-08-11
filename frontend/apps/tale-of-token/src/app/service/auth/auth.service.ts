@@ -6,6 +6,7 @@ import { Auth, getAuth, onAuthStateChanged, signInWithCustomToken, signOut } fro
 import { doc, Firestore, getDoc, getFirestore } from '@angular/fire/firestore';
 import { BehaviorSubject } from 'rxjs';
 import User = firebase.User;
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -16,7 +17,7 @@ export class AuthService {
     private usernameSubject = new BehaviorSubject<string | null>(null);
     username$ = this.usernameSubject.asObservable();
 
-    constructor(private auth: Auth,  @Inject(Firestore) private firestore: Firestore) {
+    constructor(private auth: Auth,  @Inject(Firestore) private firestore: Firestore, private router: Router) {
         console.log('Firestore instance:', this.firestore);
 
         if ((window as any).ethereum) {
@@ -43,7 +44,7 @@ export class AuthService {
                 console.log('Is Firestore instance:', testFirestore instanceof Firestore);
 
                 try {
-                    const userDocRef = doc(this.firestore, "cities", user.uid);
+                    const userDocRef = doc(this.firestore, "users", user.uid);
 
                     console.log('Document Reference:', userDocRef);
 
@@ -107,8 +108,11 @@ export class AuthService {
                 return;
             }
 
+
             const { customToken } = await response.json();
             await signInWithCustomToken(this.auth, customToken);
+            await this.router.navigate(['/home']); // Rediriger vers la page de login après déconnexion
+
             console.log("User signed in with MetaMask");
         } catch (error) {
             console.error("Error during MetaMask sign in: ", error);
@@ -119,6 +123,7 @@ export class AuthService {
     async logout(): Promise<void> {
         try {
             await signOut(this.auth);
+            this.router.navigate(['/login']); // Rediriger vers la page de login après déconnexion
             console.log('User signed out successfully');
         } catch (error) {
             console.error('Error signing out: ', error);

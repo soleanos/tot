@@ -22,21 +22,6 @@ lib-cov
 coverage
 *.lcov
 
-# Android build files
-apps/tale-of-token/android/
-
-# iOS build files
-apps/tale-of-token/ios/
-
-# Package lock files
-package-lock.json
-
-# Tools
-tools/
-
-# Backup files
-../backup/package.json.angular18
-
 # nyc test coverage
 .nyc_output
 
@@ -120,10 +105,8 @@ dist
 
 # Angular cache
 .angular
-
+.idea
 # DS_STORE
 .DS_Store
-
-# Angular environment files
-src/environments/environment.ts
-src/environments/environment.prod.ts
+.nx/cache
+.nx/workspace-data

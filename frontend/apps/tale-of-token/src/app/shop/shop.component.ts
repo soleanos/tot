@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SwordTypeEnum } from '@company-name/shared/data-access-model';
+import { PhaserSingletonService } from '@company-name/shared-phaser-singleton';
 import { ModalController } from '@ionic/angular';
-import { SwordTypeEnum } from '@soleano/shared/data-access-model';
-import { PhaserSingletonService } from '@soleano/shared-phaser-singleton';
 
 @Component({
     selector: 'openforge-shop',
@@ -11,11 +11,15 @@ import { PhaserSingletonService } from '@soleano/shared-phaser-singleton';
     styleUrls: ['./shop.component.scss'],
 })
 export class ShopPageComponent implements OnInit {
-    public isModal: boolean = false; // * Property to catch if component is on the modal or not
-    constructor(private router: Router, private modalController: ModalController) {}
+    public isModal = false; // * Property to catch if component is on the modal or not
+    public constructor(
+        private router: Router,
+        private modalController: ModalController
+    ) {
+        console.log('ShopPageComponent constructor');
+    }
 
-    ngOnInit(): void {
-        console.log('ShopPageComponent ngOnInit');
+    public ngOnInit(): void {
         this.checkIfModal();
     }
 

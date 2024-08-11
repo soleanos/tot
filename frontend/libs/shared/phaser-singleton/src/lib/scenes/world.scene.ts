@@ -1,23 +1,24 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable no-magic-numbers */
-import { Blacksmith, CheapSword, FancySword, Sword } from '@soleano/shared/data-access-model';
+// eslint-disable-next-line import/no-cycle
+import { Blacksmith, CheapSword, FancySword, Sword } from '@company-name/shared/data-access-model';
 import * as Phaser from 'phaser';
 
 import { ScrollManager } from '../utilities/scroll-manager';
 
 export class WorldScene extends Phaser.Scene {
     private backgroundKey = 'background-image'; // * Store the background image name
-    private backgroundImageAsset = 'assets/adventure/chapter_1_background.png'; // * Asset url relative to the app itself
+    private backgroundImageAsset = 'assets/blacksmith/blacksmith_bg.png'; // * Asset url relative to the app itself
     private backgroundImage: Phaser.GameObjects.Image; // * Reference for the background image
     private blackSmith: Blacksmith; // * We only have a single blacksmith in this game
     private scrollManager: ScrollManager; // * Custom openforge utility for handling scroll
     public constructedSwords: Sword[] = [];
 
-    constructor() {
+    public constructor() {
         super({ key: 'preloader' });
     }
 
-    async preload(): Promise<void> {
+    public async preload(): Promise<void> {
         try {
             console.log('world.scene.ts', 'Preloading Assets...');
 
@@ -27,7 +28,8 @@ export class WorldScene extends Phaser.Scene {
             this.load.image(FancySword.key, FancySword.imageAsset);
             this.load.image(CheapSword.key, CheapSword.imageAsset);
             // * Load the blacksmith sprites
-            await this.preloadBlacksmithCharacter();
+            this.preloadBlacksmithCharacter();
+            return Promise.resolve();
         } catch (e) {
             console.error('preloader.scene.ts', 'error preloading', e);
         }
@@ -36,7 +38,7 @@ export class WorldScene extends Phaser.Scene {
     /**
      * * Load the blacksmith sprites
      */
-    preloadBlacksmithCharacter(): void {
+    public preloadBlacksmithCharacter(): void {
         this.load.atlas(Blacksmith.idleKey, Blacksmith.spriteSheet, Blacksmith.atlast);
         this.load.atlas(Blacksmith.hammeringKey, Blacksmith.spriteSheet, Blacksmith.atlast);
         this.load.animation(this.backgroundKey, Blacksmith.animation);
@@ -45,7 +47,7 @@ export class WorldScene extends Phaser.Scene {
     /**
      * * Phaser will only call create after all assets in Preload have been loaded
      */
-    async create(): Promise<void> {
+    public async create(): Promise<void> {
         console.log('forge.scene.ts', 'Creating Assets...', this.scale.width, this.scale.height);
 
         // * Setup the Background Image
@@ -74,7 +76,7 @@ export class WorldScene extends Phaser.Scene {
      *
      * @param gameSize
      */
-    resize(gameSize: Phaser.Structs.Size): void {
+    public resize(gameSize: Phaser.Structs.Size): void {
         console.log('Resizing', gameSize.width, gameSize.height);
         this.cameras.resize(gameSize.width, gameSize.height);
     }

@@ -1,12 +1,12 @@
 /* eslint-disable no-magic-numbers */
-import { Sword, SwordTypeEnum } from '@soleano/shared/data-access-model';
+import { Sword, SwordTypeEnum } from '@company-name/shared/data-access-model';
 
 export class CheapSword extends Phaser.GameObjects.Image implements Sword {
     public static imageAsset = 'assets/swords/cheap_sword.png'; // * The asset for the sword, relative to URL
     public static key = 'cheap-sword'; // * Key for the cheap sword, used by phaser if it's an animation
     public swordType: SwordTypeEnum; // * Interface from parent Sword
 
-    constructor(phaserScene: Phaser.Scene) {
+    public constructor(phaserScene: Phaser.Scene) {
         super(phaserScene, -550, -450, CheapSword.key);
         console.log('cheap_sword.class', 'constructor()');
         this.swordType = SwordTypeEnum.CHEAP; // * inherited from Sword

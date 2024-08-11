@@ -18,22 +18,34 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@soleano/tale-of-token/ionic/ui-buttons": [
+      "@company-name/tale-of-token/ionic/ui-buttons": [
         "libs/tale-of-token/ionic/ui-buttons/src/index.ts"
       ],
-      "@soleano/tale-of-token/ionic/ui-headers": [
+      "@company-name/tale-of-token/ionic/ui-headers": [
         "libs/tale-of-token/ionic/ui-headers/src/index.ts"
       ],
-      "@soleano/tale-of-token/ionic/ui-modals": [
+      "@company-name/tale-of-token/ionic/ui-modals": [
         "libs/tale-of-token/ionic/ui-modals/src/index.ts"
       ],
-      "@soleano/tale-of-token/phaser/singleton": [
+      "@company-name/tale-of-token/phaser/singleton": [
         "libs/tale-of-token/phaser/singleton/src/index.ts"
       ],
-      "@soleano/tale-of-token/phaser/ui-modals": [
+      "@company-name/tale-of-token/phaser/ui-modals": [
         "libs/tale-of-token/phaser/ui-modals/src/index.ts"
       ],
-      "@soleano/shared/data-access-model": [
+      "@company-name/shared/data-access-model": [
+        "libs/shared/data-access-model/src/index.ts"
+      ],
+      "@company-name/tale-of-token/ionic/ui-modals": [
+        "libs/tale-of-token/ionic/ui-modals/src/index.ts"
+      ],
+      "@company-name/tale-of-token/phaser/ui-modals": [
+        "libs/tale-of-token/phaser/ui-modals/src/index.ts"
+      ],
+      "@company-name/shared-phaser-singleton": [
+        "libs/shared/phaser-singleton/src/index.ts"
+      ],
+      "@company-name/shared/data-access-model": [
         "libs/shared/data-access-model/src/index.ts"
       ]
     }
